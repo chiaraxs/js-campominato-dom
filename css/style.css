@@ -1,0 +1,64 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* font style */
+h1, h3{
+    text-align: center;
+    margin: 20px; 
+}
+
+/* button style */
+.container-button{
+    display: flex;
+    justify-content: center;
+}
+
+.container-button button {
+    width: 100px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* box style */
+.container-box{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+
+.box{
+    border: 2px #000 solid;
+    width: 50px;
+    height: 50px;
+}
+
+
+/* ----- JS ---- */
+/* classi width aggiunte da js in base al lvl */
+.width_simple {
+    width: 500px;
+}
+
+.width_medium {
+    width: 450px;
+}
+
+.width_hard {
+    width: 350px;
+}
+
+/* change bg on click > NO BOMBA */
+.box.blue{
+    background-color: cornflowerblue;
+}
+
+/* change bg on click > SI BOMBA */
+.box.red{
+    background-color: red;
+}
+

@@ -57,11 +57,26 @@ function createBoxGrid (container, boxNumbers) {
     square.className ='box';
     square.innerHTML = boxNumbers;
     container.append(square);
-    //stabilisco l'evento al click -> change bg in blue quando non prendo la bomba
-    square.addEventListener('click', function(){
-    this.classList.add('blue'); 
-    })
 }
+
+// creo funzione evento al click -> change color on click
+// change bg in red quando prendo la bomba
+function changeColour () {
+    if (bombs.includes(randomNumber)){
+        square.addEventListener('click', function(){
+            this.classList.add('red'); 
+            this.classList.remove('blue');    
+        })
+    }
+    // change bg in blue quando non prendo la bomba
+    if (!bombs.includes(randomNumber)) {
+        square.addEventListener('click', function(){
+            this.classList.add('blue'); 
+            this.classList.remove('red');
+        })
+    }
+}
+
 
 
 // CICLO CREAZIONE GRIGLIE //

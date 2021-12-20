@@ -32,22 +32,21 @@ function getRandom(min, max) {
 }
 
 
-// 4. CICLO WHILE X CREAZIONE 16 BOMBE RANDOMICHE IN GRIGLIA PER LVL SIMPLE - DA 1 A 100 //
+// 4. CICLO WHILE X CREAZIONE 16 BOMBE RANDOMICHE IN GRIGLIA PER CIASCUN LVL//
+// (il valore MaxValue mi permette di preimpostare un valore prestabilito a seconda del lvl - 100, 81, 49)
 // il lenght non aumenta mai fin quando non si verifica la condizione dell'if ->
 // -> finchè la lunghezza l'array delle bombe è < 16
-// genera un num casuale randomico tra uno e 100.
+// genera un num casuale randomico tra uno e maxValue.
 // se il num NON è incluso nell'array delle bombe 
 // --> allora inserisci la bomba
 
-function generateBombs (){
+function generateBombs (MaxValue){
+    bombs = []; // resetto le bombe ad ogni nuovo gioco
     while (bombs.length < maxBombs) {
-        const randomNumber = getRandom(1, 100);
+    const randomNumber = getRandom(1, MaxValue);
         if (!bombs.includes(randomNumber)) {
             bombs.push(randomNumber)
         }
-        
-        // debug in console
-        console.log(bombs);
     }
 }
 

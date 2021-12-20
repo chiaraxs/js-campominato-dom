@@ -14,14 +14,42 @@
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
 
-// 1. creo funzione che generi numeri random/bombe (non replicabili) e mi restituisca il risultato in un array vuoto
-// -> n.b. la dichiarazione dell'array vuoto è al punto 3
+// 1. fisso selettori tra js e dom -> 3 buttons + container-box da replicare con ciclo for
+const easyLevelButton = document.getElementById("easy-button");
+const mediumLevelButton = document.getElementById("medium-button");
+const hardLevelButton = document.getElementById("hard-button");
+const boxes = document.querySelector('.container-box');
+
+
+// 2. creo array vuoto per bombs da inserire randomicamente nella griglia da far calcolare a while
+// creo costante fissa a 16 per numero massimo bombe -> maxBombs
+const bombs = [];
+const maxBombs = 16;
+
+// 2. creo funzione che generi numeri random/bombe (non replicabili) e mi restituisca il risultato nell'array vuoto bombs
 function getRandom(min, max) {
     return Math.round(Math.random() * (max - min)) + min;
 }
 
 
-// 2. creo funzione per creare e appendere sia i boxes che i numeri al loro interno
+// 3. CICLO WHILE X CREAZIONE 16 BOMBE RANDOMICHE IN GRIGLIA PER LVL SIMPLE - DA 1 A 100 //
+// il lenght non aumenta mai fin quando non si verifica la condizione dell'if ->
+// -> finchè la lunghezza l'array delle bombe è < 16
+// genera un num casuale randomico tra uno e 100.
+// se il num NON è incluso nell'array delle bombe 
+// --> allora inserisci la bomba
+
+while (bombs.length < maxBombs) {
+    const randomNumber = getRandom(1, 100);
+    if (!bombs.includes(randomNumber)) {
+        bombs.push(randomNumber)
+    }
+    
+    // debug in console
+    console.log(bombs);
+};
+
+// 4. creo funzione per creare e appendere sia i boxes che i numeri al loro interno
 function createBoxGrid (container, boxNumbers) {
     let square = document.createElement('div');
     square.className ='box';
@@ -29,24 +57,14 @@ function createBoxGrid (container, boxNumbers) {
     container.append(square);
     //stabilisco l'evento al click -> change bg in blue quando non prendo la bomba
     square.addEventListener('click', function(){
-    this.classList.add('blue');   
+    this.classList.add('blue'); 
     })
 }
 
 
-// 3. creo array vuoto in cui verranno pushati i randomNumbers in base al lvl scelto 
-const randomNumbers = [];
-
-
-// 4. fisso selettori tra js e dom -> 3 buttons + container-box da replicare con ciclo for
-const easyLevelButton = document.getElementById("easy-button");
-const mediumLevelButton = document.getElementById("medium-button");
-const hardLevelButton = document.getElementById("hard-button");
-const boxes = document.querySelector('.container-box');
-
-
 // CICLO CREAZIONE GRIGLIE //
 // 5. creo ciclo for per replicare boxes all'evento click in base al lvl scelto
+
 // livello simple
 easyLevelButton.addEventListener('click', function (){
     // setto la pulizia della griglia ad ogni click
@@ -91,5 +109,3 @@ hardLevelButton.addEventListener('click', function (){
         boxes.classList.remove('width_simple', 'width_medium');
     }
 });
-
-// CICLO CREAZIONE 16 BOMBE PER LVL //

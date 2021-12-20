@@ -23,7 +23,7 @@ const boxes = document.querySelector('.container-box');
 
 // 2. creo array vuoto per bombs da inserire randomicamente nella griglia da far calcolare a while
 // creo costante fissa a 16 per numero massimo bombe -> maxBombs
-const bombs = [];
+let bombs = [];
 const maxBombs = 16;
 
 // 3. creo funzione che generi numeri random/bombe (non replicabili) e mi restituisca il risultato nell'array vuoto bombs
@@ -50,45 +50,48 @@ function generateBombs (MaxValue){
     }
 }
 
-
-// 5. creo funzione per creare e appendere sia i boxes che i numeri al loro interno
-function createBoxGrid (container, boxNumbers) {
+// 5. CICLO CREAZIONE E COLORAZIONE BOXES
+// creo funzione per creare e appendere sia i boxes che i numeri al loro interno
+function createBox (container, boxNumbers) {
     let square = document.createElement('div');
     square.className ='box';
     square.innerHTML = boxNumbers;
+    changeColour(square, boxNumbers)
     container.append(square);
 }
 
-// creo funzione evento al click -> change color on click
+// 6. creo funzione evento al click -> change color on click
 // change bg in red quando prendo la bomba
-function changeColour () {
-    if (bombs.includes(randomNumber)){
+function changeColour (square, boxNumber) {
+    console.log(bombs, boxNumber)
+    if (bombs.includes(boxNumber)){
         square.addEventListener('click', function(){
             this.classList.add('red'); 
             this.classList.remove('blue');    
         })
     }
     // change bg in blue quando non prendo la bomba
-    if (!bombs.includes(randomNumber)) {
+    if (!bombs.includes(boxNumber)) {
         square.addEventListener('click', function(){
             this.classList.add('blue'); 
             this.classList.remove('red');
+            // console.log (boxNumber, bombs) // debug in console
         })
     }
 }
 
 
-
 // CICLO CREAZIONE GRIGLIE //
-// 6. creo ciclo for per replicare boxes all'evento click in base al lvl scelto
+// 7. creo ciclo for per replicare boxes all'evento click in base al lvl scelto
 
 // livello simple
 easyLevelButton.addEventListener('click', function (){
     // setto la pulizia della griglia ad ogni click
     boxes.innerHTML = '';
+    generateBombs(100) // richiamo funzione
     // genero 100 boxes
     for (let i = 1; i <= 100; i++) {
-        createBoxGrid(boxes, i); 
+        createBox(boxes, i); 
 
         // aggiungo classe widht dal css x lvl simple
         boxes.classList.add('width_simple');
@@ -101,9 +104,10 @@ easyLevelButton.addEventListener('click', function (){
 mediumLevelButton.addEventListener('click', function (){
     // setto la pulizia della griglia ad ogni click
     boxes.innerHTML = '';
+    generateBombs(81) // richiamo funzione
     // genero 81 boxes
     for (let i = 1; i <= 81; i++) {
-        createBoxGrid(boxes, i); 
+        createBox(boxes, i); 
 
         // aggiungo classe widht dal css x lvl medium
         boxes.classList.add('width_medium');
@@ -116,9 +120,10 @@ mediumLevelButton.addEventListener('click', function (){
 hardLevelButton.addEventListener('click', function (){
     // setto la pulizia della griglia ad ogni click
     boxes.innerHTML = '';
+    generateBombs(49) // richiamo funzione
     // genero 49 boxes
     for (let i = 1; i <= 49; i++) {
-        createBoxGrid(boxes, i); 
+        createBox(boxes, i); 
 
         // aggiungo classe widht dal css x lvl hard
         boxes.classList.add('width_hard');

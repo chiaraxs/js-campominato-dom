@@ -26,30 +26,33 @@ const boxes = document.querySelector('.container-box');
 const bombs = [];
 const maxBombs = 16;
 
-// 2. creo funzione che generi numeri random/bombe (non replicabili) e mi restituisca il risultato nell'array vuoto bombs
+// 3. creo funzione che generi numeri random/bombe (non replicabili) e mi restituisca il risultato nell'array vuoto bombs
 function getRandom(min, max) {
     return Math.round(Math.random() * (max - min)) + min;
 }
 
 
-// 3. CICLO WHILE X CREAZIONE 16 BOMBE RANDOMICHE IN GRIGLIA PER LVL SIMPLE - DA 1 A 100 //
+// 4. CICLO WHILE X CREAZIONE 16 BOMBE RANDOMICHE IN GRIGLIA PER LVL SIMPLE - DA 1 A 100 //
 // il lenght non aumenta mai fin quando non si verifica la condizione dell'if ->
 // -> finchè la lunghezza l'array delle bombe è < 16
 // genera un num casuale randomico tra uno e 100.
 // se il num NON è incluso nell'array delle bombe 
 // --> allora inserisci la bomba
 
-while (bombs.length < maxBombs) {
-    const randomNumber = getRandom(1, 100);
-    if (!bombs.includes(randomNumber)) {
-        bombs.push(randomNumber)
+function generateBombs (){
+    while (bombs.length < maxBombs) {
+        const randomNumber = getRandom(1, 100);
+        if (!bombs.includes(randomNumber)) {
+            bombs.push(randomNumber)
+        }
+        
+        // debug in console
+        console.log(bombs);
     }
-    
-    // debug in console
-    console.log(bombs);
-};
+}
 
-// 4. creo funzione per creare e appendere sia i boxes che i numeri al loro interno
+
+// 5. creo funzione per creare e appendere sia i boxes che i numeri al loro interno
 function createBoxGrid (container, boxNumbers) {
     let square = document.createElement('div');
     square.className ='box';
@@ -63,7 +66,7 @@ function createBoxGrid (container, boxNumbers) {
 
 
 // CICLO CREAZIONE GRIGLIE //
-// 5. creo ciclo for per replicare boxes all'evento click in base al lvl scelto
+// 6. creo ciclo for per replicare boxes all'evento click in base al lvl scelto
 
 // livello simple
 easyLevelButton.addEventListener('click', function (){

@@ -5,10 +5,28 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #53868B	;
+}
+
+.bomb{
+    text-align: center;
+}
+
+
 /* font style */
-h1, h3{
+h1, h5{
+    font-family:'The Nautigal', cursive;
+    font-size: 50px;
     text-align: center;
     margin: 20px; 
+}
+
+
+/* font-awesome */
+.fas{
+    font-size: 50px;
+    
 }
 
 /* button style */
@@ -20,8 +38,22 @@ h1, h3{
 .container-button button {
     width: 100px;
     padding: 5px;
-    border-radius: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 20px;
+    border: 1px solid black;
     margin: 10px;
+}
+
+#easy-button{
+    background-color: #EEAEEE;
+}
+
+#medium-button{
+    background-color: #8B668B;
+}
+
+#hard-button{
+    background-color: #8B4789;
 }
 
 /* box style */
@@ -29,12 +61,19 @@ h1, h3{
     display: flex;
     flex-wrap: wrap;
     margin: 10px auto;
+    border: yellowgreen;
 }
 
 .box{
-    border: 2px #000 solid;
+    background-color: #7AC5CD;
+    border: 1px white solid;
     width: 50px;
     height: 50px;
+    color: #3a2a03;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
 }
 
 
@@ -52,13 +91,18 @@ h1, h3{
     width: 350px;
 }
 
-/* change bg on click > NO BOMBA */
+/* change bg on click > NO BOMBA -> flower -> daisy */
 .box.blue{
-    background-color: cornflowerblue;
+    background-image: url(https://www.zollinger.bio/system/attachments/attachment/file/1816/normal_65400_Wiesenmargeriten_webSITE.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 /* change bg on click > SI BOMBA */
 .box.red{
-    background-color: red;
+    background-image: url(https://thumbs.dreamstime.com/b/foto-di-una-bomba-rotonda-con-fusibile-acceso-su-sfondo-rosso-grande-verticale-e-fiammifero-162951175.jpg);
+    background-position: center;
+    background-size: cover;
+
 }
 

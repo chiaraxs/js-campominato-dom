@@ -61,17 +61,19 @@ function createBox (container, boxNumbers) {
 }
 
 // 6. creo funzione evento al click -> change color on click
-// change bg in red quando prendo la bomba
-function changeColour (square, boxNumber) {
+// -> change bg in red quando prendo la bomba
+// -> se prendo la bomba, 'hai perso' con alert
+function changeColour (square, boxNumber, gameOver) {
     console.log(bombs, boxNumber)
     if (bombs.includes(boxNumber)){
         square.addEventListener('click', function(){
             this.classList.add('red'); 
-            this.classList.remove('blue');    
+            this.classList.remove('blue');
+            // alert -> gameOver
+            alert('Hai preso la bomba! Hai perso!');
         })
-    }
-    // change bg in blue quando non prendo la bomba
-    if (!bombs.includes(boxNumber)) {
+    } else {
+        // altrimenti, change bg in blue quando non prendo la bomba
         square.addEventListener('click', function(){
             this.classList.add('blue'); 
             this.classList.remove('red');

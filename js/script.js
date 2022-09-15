@@ -70,8 +70,7 @@ function changeColour (square, boxNumber, gameOver) {
             this.classList.add('red'); 
             this.classList.remove('blue');
             // alert -> gameOver
-            alert('Hai preso la bomba! Hai perso!');
-            onClick="window.location.reload();
+            alert('Hai preso la bomba! Hai perso!');  
         })
     } else {
         // altrimenti, change bg in blue quando non prendo la bomba
